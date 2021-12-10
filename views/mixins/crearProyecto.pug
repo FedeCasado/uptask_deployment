@@ -1,0 +1,19 @@
+
+mixin crearProyecto(proyecto = {})
+
+    form.agregar-proyecto(action=`/nuevo-proyecto/${proyecto.id ||''} `  method="POST")
+        .campo  
+            label(for="nombre") Nombre Proyecto:
+            input(value=proyecto.nombre type="text" id="nombre" name="nombre" placeholder="Nombre Proyecto" )
+        .campo.enviar
+            input(type="submit" value=`${proyecto.nombre ? 'Guardar' : 'Agregar' }` class="boton")
+
+
+mixin crearTareas(tareas = {})
+
+    form.agregar-tarea(action=`/proyectos/${proyecto.url}` method="POST")
+        .campo
+            label(for="tarea") Tarea:
+            input.nombre-tarea(type="text" name="tarea" placeholder="Nombre Tarea")
+        .campo.enviar 
+            input.nueva-tarea(type="submit" value="Agregar" class="boton")
